@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="400">
+
+        <KeyFrameSet>
+
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/cl_products_details_fab_wrapper" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/cl_products_details_fab_wrapper"
+            android:visibility="invisible" />
+
+        <Constraint
+            android:id="@+id/cl_product_items_count_menu_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/product_fab_size"
+            android:visibility="visible"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+    </ConstraintSet>
+</MotionScene>

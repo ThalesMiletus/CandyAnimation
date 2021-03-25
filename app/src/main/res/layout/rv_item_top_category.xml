@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homeViewModel"
+            type="com.example.candyanimation.ui.home.HomeViewModel" />
+
+        <variable
+            name="category"
+            type="com.example.candyanimation.model.Category" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/d22">
+
+        <View
+            android:id="@+id/category_item_oval_wrapper"
+            android:layout_width="156dp"
+            android:layout_height="254dp"
+            android:background="@drawable/shape_oval_r29"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d16"
+            android:layout_marginTop="@dimen/d34"
+            android:fontFamily="@font/circe_bold"
+            android:text="@{category.name}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Cakes" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_category_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circe"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s14"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_category_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_category_name"
+            app:productsCount="@{category.productsCount}"
+            tools:text="75 products" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_category_wrapper"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="78dp"
+            android:layout_marginTop="116dp"
+            android:background="@drawable/shape_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_category"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:circleImageUrl="@{category.imgSrcUrl}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item_category_wrapper"
+            app:layout_constraintEnd_toEndOf="@+id/iv_item_category_wrapper"
+            app:layout_constraintStart_toStartOf="@+id/iv_item_category_wrapper"
+            app:layout_constraintTop_toTopOf="@+id/iv_item_category_wrapper"
+            app:rotation="@{homeViewModel.rotation}"
+            tools:src="@mipmap/ic_round_cake" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

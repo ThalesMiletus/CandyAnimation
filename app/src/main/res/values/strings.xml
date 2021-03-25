@@ -1,0 +1,26 @@
+<resources>
+    <!-- GENERAL -->
+    <string name="app_name">CandyAnimation</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_shopping">Shopping</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- HomeFragment -->
+    <string name="find_code_get_prize">FIND CODE\nGET PRIZE</string>
+    <string name="discover">Discover</string>
+    <string name="most_popular">Most popular</string>
+    <string name="categories">Categories</string>
+    <string name="search_hint">Search</string>
+
+    <!-- ProductDetailsFragment -->
+    <string name="add_to_basket">Add to basket</string>
+
+    <!-- Formatter -->
+    <string name="price_amd_formatter">%1$d AMD</string>
+    <string name="price_dram_kg_formatter">%1$d֏ / kg</string>
+    <string name="shelf_life_months_formatter">%1$d months</string>
+    <string name="shelf_life_products_count_formatter">%1$d products</string>
+
+</resources>

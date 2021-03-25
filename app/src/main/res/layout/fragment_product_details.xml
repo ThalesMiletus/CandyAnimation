@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="productDetailsViewModel"
+            type="com.example.candyanimation.ui.product.ProductDetailsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.product.ProductDetailsFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/d14" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/d22" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_product_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{productDetailsViewModel.loadedPopularProduct.imgSrcUrl}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@mipmap/candy" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_arrow_close"
+                    android:layout_width="@dimen/d40"
+                    android:layout_height="@dimen/d40"
+                    android:layout_marginStart="@dimen/d20"
+                    android:layout_marginTop="@dimen/d20"
+                    android:src="@drawable/ic_baseline_expand_more_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/like_wrapper"
+                    android:layout_width="@dimen/d46"
+                    android:layout_height="@dimen/d46"
+                    android:layout_marginEnd="@dimen/d30"
+                    android:background="@drawable/shadow_circle_r6_y3"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_product_details"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_product_details" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_like_heart"
+                    android:layout_width="@dimen/d20"
+                    android:layout_height="@dimen/d20"
+                    android:src="@drawable/ic_like"
+                    app:layout_constraintBottom_toBottomOf="@+id/like_wrapper"
+                    app:layout_constraintEnd_toEndOf="@+id/like_wrapper"
+                    app:layout_constraintStart_toStartOf="@+id/like_wrapper"
+                    app:layout_constraintTop_toTopOf="@+id/like_wrapper" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_product_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d20"
+                    android:fontFamily="@font/nunito"
+                    android:text="@{productDetailsViewModel.loadedPopularProduct.category}"
+                    android:textColor="@color/boldPink"
+                    android:textSize="@dimen/s16"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_product_details"
+                    tools:text="Biscuits" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_product_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@{productDetailsViewModel.loadedPopularProduct.name}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s24"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_product_category"
+                    tools:text="Biscuits with chocolate" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_product_detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d18"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/s20"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_product_title"
+                    app:productPriceAMD="@{productDetailsViewModel.loadedPopularProduct.price}"
+                    tools:text="2500 AMD" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d30"
+                    android:fontFamily="@font/nunito"
+                    android:text="@{productDetailsViewModel.loadedPopularProduct.description}"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s18"
+                    app:layout_constraintEnd_toEndOf="@+id/gl_end"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_price"
+                    tools:text="Antoine's cookies are prepared and baked in our kitchen. Every ingredient is measured precisely down to the gram to make the most delicious cookies in the Bay Area." />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d20"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@{productDetailsViewModel.loadedPopularProduct.ingredients}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s18"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/product_description"
+                    tools:text="Ingredients" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_ingredients_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d12"
+                    android:fontFamily="@font/nunito"
+                    android:text="@{productDetailsViewModel.loadedPopularProduct.ingredientsList}"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s18"
+                    app:layout_constraintEnd_toEndOf="@+id/gl_end"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/product_ingredients"
+                    tools:text="Sugar, glucose syrup, starch, flavoring, food coloring, gelatin" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_shelf_life"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d12"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@{productDetailsViewModel.loadedPopularProduct.shelfLife}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s18"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/product_ingredients_details"
+                    tools:text="Shelf life" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/product_shelf_life_months"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d12"
+                    android:fontFamily="@font/nunito"
+                    android:paddingBottom="@dimen/product_fab_size"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s18"
+                    app:layout_constraintEnd_toEndOf="@+id/gl_end"
+                    app:layout_constraintStart_toStartOf="@+id/gl_start"
+                    app:layout_constraintTop_toBottomOf="@+id/product_shelf_life"
+                    app:shelfLifeMonths="@{productDetailsViewModel.loadedPopularProduct.productShelfLifeMonths}"
+                    tools:text="12 months" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/products_details_item_count_menu_scene"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:showPaths="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_products_details_fab_wrapper"
+                android:layout_width="@dimen/product_fab_size"
+                android:layout_height="@dimen/product_fab_size"
+                android:layout_marginEnd="@dimen/d16"
+                android:layout_marginBottom="@dimen/d16"
+                android:background="@drawable/shape_circle"
+                android:backgroundTint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_fab_divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.40" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_shopping_cart"
+                    android:layout_width="@dimen/d22"
+                    android:layout_height="@dimen/d22"
+                    android:src="@drawable/ic_shopping_cart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/gl_fab_divider"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/s14"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_shopping_cart"
+                    app:layout_constraintEnd_toEndOf="@+id/gl_fab_divider"
+                    app:layout_constraintTop_toTopOf="@+id/iv_shopping_cart" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_product_items_count_menu_wrapper"
+                android:layout_width="0dp"
+                android:visibility="invisible"
+                android:layout_height="@dimen/product_fab_size"
+                android:background="@android:color/white"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cl_products_details_fab_wrapper">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_count_menu"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.3636" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/shape_oval_r29"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="center"
+                    android:text="@string/add_to_basket"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/s18"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.8"
+                    app:layout_constraintStart_toStartOf="@+id/gl_count_menu"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.6" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_products_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/s24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/gl_count_menu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="+"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/s24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/gl_count_menu"
+                    app:layout_constraintStart_toEndOf="@+id/tv_products_count"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="-"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/s24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_products_count"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <View
+                    android:id="@+id/upper_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/shadow_gray"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

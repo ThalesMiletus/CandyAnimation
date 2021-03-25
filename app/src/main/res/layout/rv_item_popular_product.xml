@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homeViewModel"
+            type="com.example.candyanimation.ui.home.HomeViewModel" />
+
+        <variable
+            name="product"
+            type="com.example.candyanimation.model.Product" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_oval_r12_y4"
+        android:onClick="@{() -> homeViewModel.onProductItemClicked(product.id)}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d5"
+            android:layout_marginTop="@dimen/d7"
+            android:fontFamily="@font/circe"
+            android:text="@{product.name}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/s18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Candy chocolate circles" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/d20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_item_product"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:background="@color/white1f">
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/motionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutDescription="@xml/popular_products_chart_menu_scene"
+                tools:showPaths="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/iv_item_shopping_chart_wrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/d5"
+                    android:layout_marginBottom="@dimen/d5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <View
+                        android:id="@+id/iv_item_shopping_chart_bg"
+                        android:layout_width="38dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/shape_oval_r62"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_item_shopping_chart"
+                        android:layout_width="@dimen/d15"
+                        android:layout_height="@dimen/d13"
+                        android:src="@drawable/ic_shopping_cart"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_products_numbers_menu_wrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/d10"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_item_shopping_chart_wrapper"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_item_shopping_chart_wrapper"
+                    app:layout_constraintTop_toTopOf="@+id/iv_item_shopping_chart_wrapper">
+
+                    <TextView
+                        android:id="@+id/tv_btn_plus"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/shape_circle"
+                        android:backgroundTint="@color/shadow_gray"
+                        android:gravity="center"
+                        android:text="+"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_item_count"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:gravity="center"
+                        android:text="5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_btn_plus"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_btn_minus"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="@dimen/d7"
+                        android:background="@drawable/shape_circle"
+                        android:backgroundTint="@color/shadow_gray"
+                        android:gravity="center"
+                        android:text="-"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_item_count"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_item_product_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/d10"
+                    android:layout_marginBottom="@dimen/d5"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/gray7"
+                    android:textSize="@dimen/s16"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_item_shopping_chart_wrapper"
+                    app:layout_constraintStart_toEndOf="@+id/iv_item_shopping_chart_wrapper"
+                    app:layout_constraintTop_toTopOf="@+id/iv_item_shopping_chart_wrapper"
+                    app:productPriceDramKg="@{product.price}"
+                    tools:text="2500֏ / kg" />
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_product"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/d3"
+            android:layout_marginEnd="@dimen/d4"
+            android:layout_marginBottom="@dimen/d3"
+            app:imageUrl="@{product.imgSrcUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_chocolate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
